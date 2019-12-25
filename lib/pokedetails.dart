@@ -18,7 +18,7 @@ class PokeDetail extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              SizedBox(height: 50.0,),
+              SizedBox(height: 100.0,),
               Text(pokemon.name,
               style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),),
               Text("Height: "+pokemon.height),
@@ -32,6 +32,24 @@ class PokeDetail extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: pokemon.weaknesses.map((t)=>FilterChip(label: Text(t), backgroundColor: Colors.redAccent, onSelected: (b){})).toList(),
+              ),
+              pokemon.prevEvolution==null
+              ?Text("")
+              :Text("Pre Evolution: "),
+              pokemon.prevEvolution==null
+              ?Text("")
+              :Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: pokemon.prevEvolution.map((t)=>FilterChip(label: Text(t.name), backgroundColor: Colors.greenAccent, onSelected: (b){})).toList(),
+              ),
+              pokemon.nextEvolution==null
+              ?SizedBox()
+              :Text("Next Evolution: "),
+              pokemon.nextEvolution==null
+              ?SizedBox()
+              :Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: pokemon.nextEvolution.map((t)=>FilterChip(label: Text(t.name), backgroundColor: Colors.blueGrey, onSelected: (b){})).toList(),
               ),
             ],
           ),
